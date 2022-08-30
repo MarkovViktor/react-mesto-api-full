@@ -1,0 +1,11 @@
+.place {
+  margin: 0 auto;
+  background-color: white;
+  max-width: 282px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 240px 42px;
+  grid-template-areas: 'img img' 'title like' 'title count' '.count';
+  position: relative;
+}

@@ -1,0 +1,4 @@
+.place__like-count {
+  grid-area: count;
+  padding-left: 6px;
+}

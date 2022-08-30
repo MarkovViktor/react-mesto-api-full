@@ -1,0 +1,16 @@
+.header__container_type_button {
+  margin: 0 auto;
+  margin-left: 24px;
+  background-color: black;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+.header__container_type_button:hover {
+    transition: opacity 0.3s ease;
+    opacity: 0.8;
+  }

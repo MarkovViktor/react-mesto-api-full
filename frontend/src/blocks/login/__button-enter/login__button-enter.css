@@ -1,0 +1,10 @@
+.login__button-enter {
+    background-color: white;
+    color: black;
+}
+
+.popup__btn-save:hover {
+    transition: 0.1s;
+    background-color: rgba(142, 147, 160, 0.966);
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.profile {
+  margin: 0 auto;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: 152px auto 40px 1fr 150px;
+  grid-template-areas: 'ava name ebttn . abttn' 'ava job . . abttn';
+  max-width: 880px;
+  align-items: center;
+}
+
+@media screen and (max-width: 889px) {
+  .profile {
+    padding: 43px 0 36px;
+    grid-template-columns: 1fr 270px 1px 10px 1fr;
+    grid-template-areas:
+    '. ava ava ava .' 
+    '. name ebttn . .'
+    '. job job . .'
+    '. abttn abttn abttn .';
+  }
+}
