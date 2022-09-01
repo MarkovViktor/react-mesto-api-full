@@ -3,6 +3,8 @@ const allowedCors = [
   'localhost:3000',
   'http://project15.markov.students.nomoredomains.sbs',
   'https://project15.markov.students.nomoredomains.sbs',
+  'http://api.project15.students.nomoredomains.sbs',
+  'https://api.project15.students.nomoredomains.sbs',
 ];
 
 // eslint-disable-next-line consistent-return
