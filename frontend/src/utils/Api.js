@@ -89,7 +89,7 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.project15.students.nomoredomains.sbs',
   headers: {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
+    //authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json'
   }
 }); 
