@@ -60,6 +60,15 @@ class Api {
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
+  changeLikeCardStatus(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`,
+      {
+        method: isLiked ? "PUT" : "DELETE",
+        headers: this._headers,
+      })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
+  }
+
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
