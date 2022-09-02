@@ -8,7 +8,7 @@ const checkResponse = (res) => {
     return res.json()
         .then((data) => {
             console.log('возвращаем данные', data)
-            throw new Error(data.error);
+            throw new Error(data.message[0].messages[0].message);
         });
 };
 
