@@ -52,14 +52,6 @@ class Api {
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 
-  // deleteLike(id) {
-  //   return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //     method: "DELETE",
-  //     credentials: 'include',
-  //     headers: this._headers,
-  //   }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
-  // }
-
   changeLikeCardStatus(id, isLiked) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`,
       {
@@ -69,14 +61,6 @@ class Api {
       })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
-
-  // addLike(id) {
-  //   return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-  //     method: "PUT",
-  //     credentials: 'include',
-  //     headers: this._headers,
-  //   }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
-  // }
 
   getAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
