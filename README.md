@@ -1,5 +1,5 @@
 # react-mesto-api-full
 Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`. 
   
-Public IPv4 62.84.122.248
-* [view the project](https://project15.markov.students.nomoredomains.sbs)
+* Public IPv4 62.84.122.248
+* [View the project](https://project15.markov.students.nomoredomains.sbs)
