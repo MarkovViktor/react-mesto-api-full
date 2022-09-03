@@ -7,6 +7,7 @@ class Api {
   getProfile() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
@@ -14,6 +15,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'GET',
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
@@ -21,6 +23,7 @@ class Api {
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -32,6 +35,7 @@ class Api {
   addCard(name, link) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         name,
@@ -43,6 +47,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
@@ -50,6 +55,7 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
@@ -58,6 +64,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards/${id}/likes`,
       {
         method: isLiked ? "PUT" : "DELETE",
+        credentials: 'include',
         headers: this._headers,
       })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
@@ -66,6 +73,7 @@ class Api {
   addLike(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
+      credentials: 'include',
       headers: this._headers,
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
@@ -73,6 +81,7 @@ class Api {
   getAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({
         avatar,
