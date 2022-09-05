@@ -65,7 +65,7 @@ module.exports.deleteCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Запрашиваемая карточка не найдена'));
+        next(new BadRequestError('Некорректный id карточки'));
       } else {
         next(err);
       }
