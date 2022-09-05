@@ -53,20 +53,11 @@ module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
       if (!card) {
-        next(new NotFoundError('Запрашиваемая карточка не найдена'));
-      } else if (card.owner.toString() === req.user._id) {
-        return Card.findByIdAndRemove(card._id);
-      } else {
-        next(new ForbiddenError('Невозможно удалить чужую карточку'));
+        throw new NotFoundError('Запрашиваемая карточка не найдена');
+      } if (!card.owner.equals(req.user._id)) {
+        res.status(403).send({ message: 'Невозможно удалить чужую карточку' });
       }
-      return false;
-    })
-    .then((card) => {
-      if (!card) {
-        next(new NotFoundError('Запрашиваемая карточка не найдена'));
-      } else {
-        res.send(card);
-      }
+      return card.remove();
     })
     .catch((err) => {
       if (err.name === 'CastError') {
