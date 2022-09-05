@@ -61,13 +61,6 @@ module.exports.deleteCard = (req, res, next) => {
       }
       return false;
     })
-    .then((card) => {
-      if (!card) {
-        next(new NotFoundError('Запрашиваемая карточка не найдена'));
-      } else {
-        res.send(card);
-      }
-    })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Запрашиваемая карточка не найдена'));
