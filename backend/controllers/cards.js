@@ -54,16 +54,19 @@ module.exports.deleteCard = (req, res, next) => {
     .then((card) => {
       if (!card) {
         next(new NotFoundError('Запрашиваемая карточка не найдена'));
-      } else if (card.owner.toString() !== req.user._id) {
-        next(new ForbiddenError('Невозможно удалить чужую карточку'));
+      } else if (card.owner.toString() === req.user._id) {
+        return Card.findByIdAndRemove(card._id);
       } else {
-        Card.findByIdAndRemove(card._id)
+        next(new ForbiddenError('Невозможно удалить чужую карточку'));
+      }
+      return false;
+    })
     .then((card) => {
       if (!card) {
         next(new NotFoundError('Запрашиваемая карточка не найдена'));
       }
-        res.send(card);
-      })
+      res.send(card);
+    })
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Запрашиваемая карточка не найдена'));
