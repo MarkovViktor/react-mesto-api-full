@@ -61,8 +61,9 @@ module.exports.getUserId = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new NotFoundError('Запрашиваемый пользователь не найден'));
+        return;
       }
-      return next(err);
+      next(err);
     });
 };
 
