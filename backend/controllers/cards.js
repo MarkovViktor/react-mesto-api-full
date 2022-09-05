@@ -1,6 +1,7 @@
 const Card = require('../models/card');
 const NotFoundError = require('../components/NotFoundError');
 const BadRequestError = require('../components/BadRequestError');
+const ForbiddenError = require('../components/ForbiddenError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
@@ -52,12 +53,20 @@ module.exports.deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .then((card) => {
       if (!card) {
-        throw new NotFoundError('Запрашиваемая карточка не найдена');
-      } if (!card.owner.equals(req.user._id)) {
-        res.status(403).send({ message: 'Невозможно удалить чужую карточку' });
+        next(new NotFoundError('Запрашиваемая карточка не найдена'));
+      } else if (card.owner.toString() === req.user._id) {
+        return Card.findByIdAndRemove(card._id);
+      } else {
+        next(new ForbiddenError('Невозможно удалить чужую карточку'));
       }
-      return card.remove()
-        .then(() => res.status(200).send({ message: 'Карточка удалена' }));
+      return false;
+    })
+    .then((card) => {
+      if (!card) {
+        next(new NotFoundError('Запрашиваемая карточка не найдена'));
+      } else {
+        res.send(card);
+      }
     })
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -66,7 +75,6 @@ module.exports.deleteCard = (req, res, next) => {
         next(err);
       }
     });
-};
 
 module.exports.dislikeCard = (req, res, next) => {
   Card.findByIdAndUpdate(
